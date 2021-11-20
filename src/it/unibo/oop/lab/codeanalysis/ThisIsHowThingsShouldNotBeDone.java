@@ -47,10 +47,10 @@ public final class ThisIsHowThingsShouldNotBeDone {
      */
     /**
      * 
-     * @param a
+     * @param args
      *          not used
      */
-    public static void main(final String[] a) {
+    public static void main(final String... args) {
         /*
          * PMD Complains:
          * 
