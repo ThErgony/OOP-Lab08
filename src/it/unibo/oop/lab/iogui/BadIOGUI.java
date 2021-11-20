@@ -5,10 +5,15 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.util.List;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,7 +43,33 @@ public class BadIOGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+        /*
+         * EX 01.01
+         */
+        final JPanel canvas2 = new JPanel();
+        canvas2.setLayout(new BoxLayout(canvas2, BoxLayout.X_AXIS));
+        canvas.add(canvas2, BorderLayout.CENTER);
+        canvas2.add(write);
+        /*
+         * EX 01.02
+         */
+        final JButton read = new JButton("Read");
+        canvas2.add(read);
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                /*
+                 * EX 01.03
+                 */
+                try {
+                    final List<String> rs = Files.readAllLines(new File(PATH).toPath());
+                    System.out.println(rs);
+                } catch (IOException e1) {
+                    JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace();
+                }
+            }
+        });
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
@@ -83,6 +114,10 @@ public class BadIOGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        /*
+         * resize to min size
+         */
+        frame.pack();
         /*
          * OK, ready to pull the frame onscreen
          */
