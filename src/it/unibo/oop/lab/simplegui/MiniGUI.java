@@ -10,9 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * This class is a simple application that writes a random number on a file.
@@ -35,7 +37,18 @@ public class MiniGUI {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton write = new JButton("Print a random number on standard output");
-        canvas.add(write, BorderLayout.CENTER);
+        /*
+         * EX 01.01
+         */
+        final JPanel canvas2 = new JPanel();
+        canvas2.setLayout(new BoxLayout(canvas2, BoxLayout.X_AXIS));
+        canvas.add(canvas2, BorderLayout.CENTER);
+        canvas2.add(write);
+        /*
+         * EX 01.02
+         */
+        final JTextField result = new JTextField("Result: ");
+        canvas.add(result, BorderLayout.NORTH);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
@@ -44,7 +57,12 @@ public class MiniGUI {
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println(rng.nextInt());
+                /*
+                 * EX 01.03
+                 */
+                final int res = rng.nextInt();
+                System.out.println(res);
+                result.setText("Result: " + Integer.toString(res));
             }
         });
     }
@@ -69,13 +87,19 @@ public class MiniGUI {
          */
         frame.setLocationByPlatform(true);
         /*
+         * resize to min size
+         */
+        frame.pack();
+
+        /*
          * OK, ready to pull the frame onscreen
          */
         frame.setVisible(true);
     }
 
     /**
-     * @param args ignored
+     * @param args 
+     *          ignored
      */
     public static void main(final String... args) {
        new MiniGUI().display();
