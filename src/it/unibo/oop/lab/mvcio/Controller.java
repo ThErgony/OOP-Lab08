@@ -23,7 +23,8 @@ public class Controller {
      * 1) A method for setting a File as current file
      */
     /**
-     * 
+     *  A method for setting a File as current file.
+     *
      * @param newFile the new file location to save
      */
     public void setFile(final File newFile) {
@@ -36,6 +37,7 @@ public class Controller {
      /* 2) A method for getting the current File
      */
     /**
+     * A method for getting the current File.
      * 
      * @return the current file
      */
@@ -45,6 +47,7 @@ public class Controller {
      /* 3) A method for getting the path (in form of String) of the current File
      */
     /**
+     * A method for getting the path (in form of String) of the current File.
      * 
      * @return path of current file
      */
@@ -55,6 +58,8 @@ public class Controller {
      * file. This method may throw an IOException.
      */
     /**
+     * A method that gets a String as input and saves its content on the current
+     * file. This method may throw an IOException.
      * 
      * @param text string of text to save in file
      * @throws IOException
