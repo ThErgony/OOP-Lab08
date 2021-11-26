@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -61,16 +62,28 @@ public final class SimpleGUIWithFileChooser {
     canvas.add(panel, BorderLayout.NORTH);
      /* 2) The JTextField should be non modifiable. And, should display the
      * current selected file.
-     * 
-     * 3) On press, the button should open a JFileChooser. The program should
+     */ 
+     /* 3) On press, the button should open a JFileChooser. The program should
      * use the method showSaveDialog() to display the file chooser, and if the
      * result is equal to JFileChooser.APPROVE_OPTION the program should set as
      * new file in the Controller the file chosen. If CANCEL_OPTION is returned,
      * then the program should do nothing. Otherwise, a message dialog should be
      * shown telling the user that an error has occurred (use
      * JOptionPane.showMessageDialog()).
-     * 
-     * 4) When in the controller a new File is set, also the graphical interface
+     */ 
+    browse.addActionListener(new ActionListener() {
+
+        @Override
+        public void actionPerformed(final ActionEvent e) {
+            final JFileChooser chooser = new JFileChooser(controller.getFile());
+            final int result = chooser.showSaveDialog(frame);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                controller.setFile(chooser.getSelectedFile());
+                textField.setText(controller.getPath());
+            }
+        }
+    }); 
+    /* 4) When in the controller a new File is set, also the graphical interface
      * must reflect such change. Suggestion: do not force the controller to
      * update the UI: in this example the UI knows when should be updated, so
      * try to keep things separated.
