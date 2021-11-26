@@ -32,8 +32,7 @@ public class ControllerImpl implements Controller {
      */
     @Override
     public List<String> getPrintHistory() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.history;
     }
 
     /**
@@ -41,9 +40,11 @@ public class ControllerImpl implements Controller {
      * an IllegalStateException should be thrown.
      */
     @Override
-    public String printCurrentString() {
-        // TODO Auto-generated method stub
-        return null;
+    public void printCurrentString() {
+        if (this.nextString.isEmpty()) {
+            throw new IllegalStateException("Insert a valid text");
+        }
+        this.history.add(this.nextString);
+        System.out.println(this.nextString);
     }
-
 }
