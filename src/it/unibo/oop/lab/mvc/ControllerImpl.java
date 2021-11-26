@@ -16,7 +16,6 @@ public class ControllerImpl implements Controller {
     @Override
     public void setNextStringToPrint(final String text) {
         this.nextString = Objects.requireNonNull(text);
-
     }
 
     /**
