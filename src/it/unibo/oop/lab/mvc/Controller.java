@@ -26,7 +26,7 @@ public interface Controller {
      /* 3) A method for getting the history of the printed strings (in form of a List
      * of Strings)
      */
-    List<String> getHistory();
+    List<String> getPrintHistory();
 
      /* 4) A method that prints the current string. If the current string is unset,
      * an IllegalStateException should be thrown
