@@ -51,6 +51,7 @@ public final class SimpleGUI {
         final JPanel canvas = new JPanel(new BorderLayout());
         final JTextField textField = new JTextField();
         final JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
         final JButton print = new JButton("Print");
         final JButton history = new JButton("Show history");
         final JPanel canvasButton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
