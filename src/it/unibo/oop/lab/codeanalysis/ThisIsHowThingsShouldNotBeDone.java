@@ -47,10 +47,10 @@ public final class ThisIsHowThingsShouldNotBeDone {
      */
     /**
      * 
-     * @param args
+     * @param a
      *          not used
      */
-    public static void main(final String... args) {
+    public static void main(final String... a) {
         /*
          * PMD Complains:
          * 
@@ -69,7 +69,7 @@ public final class ThisIsHowThingsShouldNotBeDone {
          * What does it mean "43"? It's a magic number!
          */
         for (int i = 0; i < ITERATION; i++) {
-            c.add(new Object());
+            c.add(a);
         }
         /*
          * FindBugs complains
