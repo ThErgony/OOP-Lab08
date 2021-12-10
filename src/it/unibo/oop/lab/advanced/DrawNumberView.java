@@ -1,5 +1,7 @@
 package it.unibo.oop.lab.advanced;
 
+import java.io.IOException;
+
 /**
  *
  */
@@ -31,9 +33,9 @@ public interface DrawNumberView {
     void limitsReached();
 
     /**
-     * 
-     * @param message the message error
+     * Display I/O Error.
+     * @param message error
      */
-    void displayError(String message);
+    void displayError(String message) throws IOException;
 
 }
